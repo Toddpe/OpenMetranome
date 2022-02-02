@@ -16,6 +16,8 @@ struct ContentView: View {
         animation: .default)
     private var items: FetchedResults<Item>
     
+    @State private var showingOptions = false
+    
     var body: some View {
         TabView{
             VStack{
@@ -28,9 +30,29 @@ struct ContentView: View {
                     Spacer()
                     Button {
                         // TODO: Add fullscreen modal
+                        showingOptions = true
                     } label: {
                         Image(systemName: "arrow.down.circle.fill")
                     }
+                        .popover(isPresented: $showingOptions) {
+                            VStack{
+                                HStack{
+                                    Spacer()
+                                    Button {
+                                        showingOptions = false
+                                    } label: {
+                                        Text("Done")
+                                            .padding([.top, .trailing])
+                                            .font(.system(size: 17, weight: .bold, design: .default))
+                                    }
+                                }
+                                Divider()
+                                Spacer()
+                                Text("Settings go here")
+                                    .font(.system(size: 17))
+                                Spacer()
+                            }
+                        }
                         .font(.system(size: 20))
                         .padding(.trailing)
                         .padding(.top, 5)
