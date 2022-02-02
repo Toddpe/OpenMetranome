@@ -16,7 +16,7 @@ struct ContentView: View {
         animation: .default)
     private var items: FetchedResults<Item>
     
-    @State private var showingOptions = false
+    @State public var showingOptions = false
     
     var body: some View {
         TabView{
@@ -35,23 +35,7 @@ struct ContentView: View {
                         Image(systemName: "arrow.down.circle.fill")
                     }
                         .popover(isPresented: $showingOptions) {
-                            VStack{
-                                HStack{
-                                    Spacer()
-                                    Button {
-                                        showingOptions = false
-                                    } label: {
-                                        Text("Done")
-                                            .padding([.top, .trailing])
-                                            .font(.system(size: 17, weight: .bold, design: .default))
-                                    }
-                                }
-                                Divider()
-                                Spacer()
-                                Text("Settings go here")
-                                    .font(.system(size: 17))
-                                Spacer()
-                            }
+                            PopoverView(showingOptions: $showingOptions)
                         }
                         .font(.system(size: 20))
                         .padding(.trailing)
@@ -119,6 +103,31 @@ struct ContentView: View {
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
+        }
+    }
+}
+
+struct PopoverView: View{
+    
+    @Binding public var showingOptions: Bool
+    
+    var body: some View {
+        VStack{
+            HStack{
+                Spacer()
+                Button {
+                    showingOptions = false
+                } label: {
+                    Text("Done")
+                        .padding([.top, .trailing])
+                        .font(.system(size: 17, weight: .bold, design: .default))
+                }
+            }
+            Divider()
+            Spacer()
+            Text("Settings go here")
+                .font(.system(size: 17))
+            Spacer()
         }
     }
 }
