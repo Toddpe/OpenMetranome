@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  OpenMetranome
 //
-//  Created by Mark Pederson on 2/2/22.
+//  Created by Todd Pederson on 2/2/22.
 //
 
 import SwiftUI
@@ -18,9 +18,36 @@ struct ContentView: View {
     
     var body: some View {
         TabView{
-            ZStack{
+            VStack{
+                HStack{
+                    Text("OpenMetronome")
+                        .bold()
+                        .font(.system(size: 20))
+                        .padding(.leading)
+                        .padding(.top, 5)
+                    Spacer()
+                    Button {
+                        // TODO: Add fullscreen modal
+                    } label: {
+                        Image(systemName: "arrow.down.circle.fill")
+                    }
+                        .font(.system(size: 20))
+                        .padding(.trailing)
+                        .padding(.top, 5)
+
+                }
+                Divider()
+                
+                Spacer()
                 Text("First")
+                Spacer()
+                
+                // Background for TabView
+                Rectangle()
+                    .frame(height: 0)
+                    .background(.thinMaterial)
             }
+            .background(Color("Background"))
                 .tabItem {
                     Image(systemName: "play")
                     Text("First")
