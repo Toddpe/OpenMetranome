@@ -15,30 +15,30 @@ struct ContentView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
-
+    
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
-                    }
-                }
-                .onDelete(perform: deleteItems)
+        TabView{
+            ZStack{
+                Text("First")
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
+                .tabItem {
+                    Image(systemName: "play")
+                    Text("First")
                 }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
+            ZStack{
+                Text("Second")
             }
-            Text("Select an item")
+                .tabItem {
+                    Image(systemName: "rectangle.stack.fill")
+                    Text("Second")
+                }
+            ZStack{
+                Text("Third")
+            }
+                .tabItem {
+                    Image(systemName: "gear")
+                    Text("Third")
+                }
         }
     }
 
