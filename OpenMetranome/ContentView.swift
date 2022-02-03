@@ -22,8 +22,10 @@ struct ContentView: View {
     let maxTempo: Int = 300
     let gestureSpeed: Double = 0.3
     
+    @State var isPlaying: Bool = false
     @State var value: Double = 120.0
     @State var valueInt: Int = 120
+    @State var italanTempo: String = "Moderato"
     @State private var startDragValue : Double = -1.0
     
     var body: some View {
@@ -50,29 +52,39 @@ struct ContentView: View {
 
                 }
                 Divider()
+                
                 Spacer()
-                
-                
-                VStack{
-                    Button {
-                        if (valueInt < 300){
-                            value += 1
-                            valueInt += 1
-                        }
-                    } label: {
-                        Image(systemName: "arrowtriangle.up.fill")
-                            .font(.system(size: 30, weight: .regular, design: .default))
-                            .foregroundColor(Color(.label))
-                    }
-                    Text("\(valueInt)")
-                        .font(.system(size: 40, weight: .regular, design: .default))
+                Spacer()
+                // Tempo selector:
+                HStack{
                     Button {
                         if (valueInt > 0){
                             value -= 1
                             valueInt -= 1
                         }
+                        changeItalianTempo()
                     } label: {
                         Image(systemName: "arrowtriangle.down.fill")
+                            .font(.system(size: 30, weight: .regular, design: .default))
+                            .foregroundColor(Color(.label))
+                    }
+                    // All tempo related text:
+                    VStack{
+                        Text("\(italanTempo)")
+                            .font(.system(size: 12, weight: .light, design: .default).italic())
+                        Text("\(valueInt)")
+                            .font(.system(size: 40, weight: .regular, design: .default))
+                        Text("BPM")
+                            .font(.system(size: 12, weight: .light, design: .default))
+                    }
+                    Button {
+                        if (valueInt < 300){
+                            value += 1
+                            valueInt += 1
+                        }
+                        changeItalianTempo()
+                    } label: {
+                        Image(systemName: "arrowtriangle.up.fill")
                             .font(.system(size: 30, weight: .regular, design: .default))
                             .foregroundColor(Color(.label))
                     }
@@ -88,12 +100,35 @@ struct ContentView: View {
                             startDragValue = value
                         }
                         let newValue = startDragValue + (Double(diff)*gestureSpeed)
-                        value = newValue < 0 ? 0 : newValue > Double(maxTempo) ? Double(maxTempo) : newValue
+                        value = newValue < 20 ? 20 : newValue > Double(maxTempo) ? Double(maxTempo) : newValue
                         valueInt = Int(value)
+                        changeItalianTempo()
                     })
-                    
-                
                 Spacer()
+                
+                
+                // Play/Pause & track selector:
+                HStack{
+                    if isPlaying{
+                        Button {
+                            isPlaying = false
+                        } label: {
+                            Image(systemName: "pause.rectangle")
+                                .font(.system(size: 40, weight: .regular, design: .default))
+                                .foregroundColor(Color(.label))
+                                .padding()
+                        }
+                    } else {
+                        Button {
+                            isPlaying = true
+                        } label: {
+                            Image(systemName: "play.rectangle")
+                                .font(.system(size: 40, weight: .regular, design: .default))
+                                .foregroundColor(Color(.label))
+                                .padding()
+                        }
+                    }
+                }
                 
                 // Background for TabView
                 Rectangle()
@@ -119,6 +154,30 @@ struct ContentView: View {
                     Image(systemName: "gear")
                     Text("Settings")
                 }
+        }
+    }
+    
+    private func changeItalianTempo() {
+        if (valueInt <= 24){
+            italanTempo = "Larghissimo"
+        } else if (valueInt <= 44){
+            italanTempo = "Grave"
+        } else if (valueInt <= 60){
+            italanTempo = "Largo"
+        } else if (valueInt <= 66){
+            italanTempo = "Larghetto"
+        } else if (valueInt <= 108){
+            italanTempo = "Andante"
+        } else if (valueInt <= 120){
+            italanTempo = "Moderato"
+        } else if (valueInt <= 156){
+            italanTempo = "Allegro"
+        } else if (valueInt <= 176){
+            italanTempo = "Vivace"
+        } else if (valueInt <= 199){
+            italanTempo = "Presto"
+        } else {
+            italanTempo = "Prestissimo"
         }
     }
 
