@@ -18,6 +18,14 @@ struct ContentView: View {
     
     @State public var showingOptions = false
     
+    // Tempo gesture:
+    let maxTempo: Int = 300
+    let gestureSpeed: Double = 0.3
+    
+    @State var value: Double = 120.0
+    @State var valueInt: Int = 120
+    @State private var startDragValue : Double = -1.0
+    
     var body: some View {
         TabView{
             VStack{
@@ -29,10 +37,9 @@ struct ContentView: View {
                         .padding(.top, 5)
                     Spacer()
                     Button {
-                        // TODO: Add fullscreen modal
                         showingOptions = true
                     } label: {
-                        Image(systemName: "arrow.down.circle.fill")
+                        Image(systemName: "line.3.horizontal.decrease.circle.fill")
                     }
                         .popover(isPresented: $showingOptions) {
                             PopoverView(showingOptions: $showingOptions)
@@ -43,9 +50,49 @@ struct ContentView: View {
 
                 }
                 Divider()
-                
                 Spacer()
-                Text("First")
+                
+                
+                VStack{
+                    Button {
+                        if (valueInt < 300){
+                            value += 1
+                            valueInt += 1
+                        }
+                    } label: {
+                        Image(systemName: "arrowtriangle.up.fill")
+                            .font(.system(size: 30, weight: .regular, design: .default))
+                            .foregroundColor(Color(.label))
+                    }
+                    Text("\(valueInt)")
+                        .font(.system(size: 40, weight: .regular, design: .default))
+                    Button {
+                        if (valueInt > 0){
+                            value -= 1
+                            valueInt -= 1
+                        }
+                    } label: {
+                        Image(systemName: "arrowtriangle.down.fill")
+                            .font(.system(size: 30, weight: .regular, design: .default))
+                            .foregroundColor(Color(.label))
+                    }
+                    
+                }
+                    .gesture(DragGesture(minimumDistance: 0)
+                    .onEnded({ _ in
+                        startDragValue = -1.0
+                    })
+                    .onChanged { dragValue in
+                        let diff =  dragValue.startLocation.y - dragValue.location.y
+                        if startDragValue == -1 {
+                            startDragValue = value
+                        }
+                        let newValue = startDragValue + (Double(diff)*gestureSpeed)
+                        value = newValue < 0 ? 0 : newValue > Double(maxTempo) ? Double(maxTempo) : newValue
+                        valueInt = Int(value)
+                    })
+                    
+                
                 Spacer()
                 
                 // Background for TabView
@@ -56,21 +103,21 @@ struct ContentView: View {
             .background(Color("Background"))
                 .tabItem {
                     Image(systemName: "play")
-                    Text("First")
+                    Text("Metranome")
                 }
             ZStack{
                 Text("Second")
             }
                 .tabItem {
                     Image(systemName: "rectangle.stack.fill")
-                    Text("Second")
+                    Text("Library")
                 }
             ZStack{
                 Text("Third")
             }
                 .tabItem {
                     Image(systemName: "gear")
-                    Text("Third")
+                    Text("Settings")
                 }
         }
     }
