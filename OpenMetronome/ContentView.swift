@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  OpenMetranome
+//  OpenMetronome
 //
 //  Created by Todd Pederson on 2/2/22.
 //

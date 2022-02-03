@@ -1,6 +1,6 @@
 //
 //  OpenMetranomeApp.swift
-//  OpenMetranome
+//  OpenMetronome
 //
 //  Created by Todd Pederson on 2/2/22.
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct OpenMetranomeApp: App {
+struct OpenMetronomeApp: App {
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
