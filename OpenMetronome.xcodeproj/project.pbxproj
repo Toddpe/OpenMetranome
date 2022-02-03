@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B8E76D7527AAE8D8001D0A85 /* OpenMetranome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenMetranome.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8E76D7527AAE8D8001D0A85 /* OpenMetronome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenMetronome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E76D7827AAE8D9001D0A85 /* OpenMetranomeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMetranomeApp.swift; sourceTree = "<group>"; };
 		B8E76D7A27AAE8D9001D0A85 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B8E76D7C27AAE962001D0A85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -47,7 +47,7 @@
 		B8E76D7627AAE8D8001D0A85 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B8E76D7527AAE8D8001D0A85 /* OpenMetranome.app */,
+				B8E76D7527AAE8D8001D0A85 /* OpenMetronome.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,9 +76,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B8E76D7427AAE8D7001D0A85 /* OpenMetranome */ = {
+		B8E76D7427AAE8D7001D0A85 /* OpenMetronome */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B8E76D8827AAE963001D0A85 /* Build configuration list for PBXNativeTarget "OpenMetranome" */;
+			buildConfigurationList = B8E76D8827AAE963001D0A85 /* Build configuration list for PBXNativeTarget "OpenMetronome" */;
 			buildPhases = (
 				B8E76D7127AAE8D7001D0A85 /* Sources */,
 				B8E76D7227AAE8D7001D0A85 /* Frameworks */,
@@ -88,9 +88,9 @@
 			);
 			dependencies = (
 			);
-			name = OpenMetranome;
+			name = OpenMetronome;
 			productName = OpenMetranome;
-			productReference = B8E76D7527AAE8D8001D0A85 /* OpenMetranome.app */;
+			productReference = B8E76D7527AAE8D8001D0A85 /* OpenMetronome.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -108,7 +108,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B8E76D7027AAE8D7001D0A85 /* Build configuration list for PBXProject "OpenMetranome" */;
+			buildConfigurationList = B8E76D7027AAE8D7001D0A85 /* Build configuration list for PBXProject "OpenMetronome" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -121,7 +121,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B8E76D7427AAE8D7001D0A85 /* OpenMetranome */,
+				B8E76D7427AAE8D7001D0A85 /* OpenMetronome */,
 			);
 		};
 /* End PBXProject section */
@@ -330,7 +330,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B8E76D7027AAE8D7001D0A85 /* Build configuration list for PBXProject "OpenMetranome" */ = {
+		B8E76D7027AAE8D7001D0A85 /* Build configuration list for PBXProject "OpenMetronome" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B8E76D8627AAE963001D0A85 /* Debug */,
@@ -339,7 +339,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B8E76D8827AAE963001D0A85 /* Build configuration list for PBXNativeTarget "OpenMetranome" */ = {
+		B8E76D8827AAE963001D0A85 /* Build configuration list for PBXNativeTarget "OpenMetronome" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B8E76D8927AAE963001D0A85 /* Debug */,
